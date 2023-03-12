@@ -20,4 +20,4 @@ def task_clean_build_files():
 
 def task_build():
     """Build python project"""
-    return {"actions": ["python3 -m build"]}
+    return {"actions": ["poetry build"]}

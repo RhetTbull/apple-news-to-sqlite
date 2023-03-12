@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## Fixed PyPI metadata
+
+[v0.4.2](https://github.com/RhetTbull/apple-news-to-sqlite/releases/tag/v0.4.2)
+
+### 12 March 2023
+
+### Changed
+
+- Added homepage and keywords to PyPI metadata
+
+### Contributors
+
+- @RhetTbull
+
 ## Fixed typo in help
 
 [v0.4.1](https://github.com/RhetTbull/apple-news-to-sqlite/releases/tag/v0.4.1)

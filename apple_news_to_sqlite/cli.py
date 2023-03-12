@@ -21,7 +21,7 @@ from .version import __version__
 )
 @click.option("--dump", is_flag=True, help="Output saved stories to standard output")
 @click.option("--schema", is_flag=True, help="Create database schema and exit")
-def main(db_path, dump, schema):
+def cli(db_path, dump, schema):
     """Export your Apple News saved stories/articles to a SQLite database
 
     Example usage:

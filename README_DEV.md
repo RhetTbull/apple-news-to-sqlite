@@ -13,3 +13,11 @@ For versioning, this project uses [bump2version](https://github.com/c4urself/bum
 * `poetry run bump2version minor --verbose --dry-run`
 
 Run again without `--dry-run` to actually bump the version.
+
+`doit` is used for running tasks:
+
+* `poetry run doit list`
+
+## Testing
+
+Not yet implemented.

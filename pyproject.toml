@@ -17,6 +17,8 @@ rich = "^13.3.2"
 
 [tool.poetry.group.dev.dependencies]
 bump2version = "^1.0.1"
+cogapp = "^3.3.0"
+doit = "^0.36.0"
 
 [build-system]
 requires = ["poetry-core"]

@@ -6,9 +6,9 @@ def task_update_readme():
     return {"actions": ["poetry run cog -r README.md"]}
 
 
-# def task_test():
-#     """Run tests"""
-#     return {"actions": ["poetry run pytest"]}
+def task_test():
+    """Run tests"""
+    return {"actions": ["poetry run pytest"]}
 
 
 def task_clean_build_files():

@@ -9,6 +9,7 @@ Thanks to Dave Bullock (https://github.com/eecue) who's idea this was and who wr
 
 from __future__ import annotations
 
+import concurrent.futures
 import contextlib
 import io
 import pathlib
@@ -149,6 +150,15 @@ def get_saved_articles(
 
         If you want to skip downloading information for certain articles, for example, previously
         downloaded articles, you can specify a list of article IDs to skip.
+
+        The return dictionaries contain the following keys:
+            id: str; the article ID
+            url: str; the article URL
+            title: str; the article title
+            description: str; the article description
+            image: str; the article image URL
+            author: str; the article author
+            date: datetime.datetime; the date the article was saved (in GMT)
     """
     skip_article_ids = skip_article_ids or []
 
@@ -159,13 +169,20 @@ def get_saved_articles(
     article_info = get_article_info(reading_list)
 
     # Extract the article information from Apple News
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        futures = []
+        for article in article_info.values():
+            article_id = article["articleID"]
+            if article_id in skip_article_ids:
+                continue
+            futures.append(
+                executor.submit(extract_info_from_apple_news, news_id=article_id)
+            )
+
     saved_articles = []
-    for article in article_info.values():
-        article_id = article["articleID"]
-        if article_id in skip_article_ids:
-            continue
-        article_info = extract_info_from_apple_news(article_id)
-        article_info["date"] = article["dateAdded"]
-        saved_articles.append(article_info)
+    for future in concurrent.futures.as_completed(futures):
+        info = future.result()
+        info["date"] = article_info[f"rl-{info['id']}"]["dateAdded"]
+        saved_articles.append(info)
 
     return saved_articles

@@ -8,7 +8,6 @@ import sys
 
 import click
 import sqlite_utils
-from rich import print
 
 from .news import get_saved_articles
 from .version import __version__

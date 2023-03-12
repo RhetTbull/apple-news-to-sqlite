@@ -131,12 +131,27 @@ def extract_info_from_apple_news(news_id: str) -> dict[str, str]:
     }
 
 
-def get_saved_articles(reading_list_file: str | None = None) -> list[dict[str, str]]:
+def get_saved_articles(
+    reading_list_file: str | None = None, skip_article_ids: list[str] | None = None
+) -> list[dict[str, str]]:
     """Get saved articles from Apple News
+
+    Args:
+        reading_list_file (str, optional): The path to the reading-list file. Defaults to None.
+        skip_article_ids (list[str], optional): A list of article IDs to skip. Defaults to None.
 
     Returns:
         list: a list of saved article dictionaries
+
+    Notes:
+        If reading_list_file is not specified, the default location is used.
+        This is probably what you want.
+
+        If you want to skip downloading information for certain articles, for example, previously
+        downloaded articles, you can specify a list of article IDs to skip.
     """
+    skip_article_ids = skip_article_ids or []
+
     # Get the saved articles binary plist
     reading_list = get_reading_list_bplist(reading_list_file=reading_list_file)
 
@@ -147,6 +162,8 @@ def get_saved_articles(reading_list_file: str | None = None) -> list[dict[str, s
     saved_articles = []
     for article in article_info.values():
         article_id = article["articleID"]
+        if article_id in skip_article_ids:
+            continue
         article_info = extract_info_from_apple_news(article_id)
         article_info["date"] = article["dateAdded"]
         saved_articles.append(article_info)

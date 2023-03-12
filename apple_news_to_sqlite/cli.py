@@ -22,13 +22,21 @@ from .version import __version__
     is_flag=True,
     help="Print saved stories to standard output as JSON.",
 )
+@click.option(
+    "--all",
+    "all_articles",
+    is_flag=True,
+    help="Process all saved articles; "
+    "if not specified, only saved articles that have not previously been stored in the database"
+    "are processed.",
+)
 @click.option("--schema", is_flag=True, help="Create database schema and exit.")
 @click.argument(
     "db_path",
     type=click.Path(file_okay=True, dir_okay=False, allow_dash=False),
     required=False,
 )
-def cli(dump, schema, db_path):
+def cli(dump, all_articles, schema, db_path):
     """Export your Apple News saved stories/articles to a SQLite database
 
     Example usage:
@@ -58,7 +66,14 @@ def cli(dump, schema, db_path):
         # Our work is done
         return
 
-    articles = get_saved_articles()
+    if all_articles:
+        skip_article_ids = []
+    else:
+        skip_article_ids = [row["id"] for row in db["articles"].rows_where()]
+        print(
+            f"Skipping {len(skip_article_ids)} previously saved {'article' if len(skip_article_ids) == 1 else 'articles'}."
+        )
+    articles = get_saved_articles(skip_article_ids=skip_article_ids)
     for article in articles:
         db["articles"].upsert(article, pk="id", alter=True)
 

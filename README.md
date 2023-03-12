@@ -30,7 +30,7 @@ cog.out(
 )
 ]]] -->
 ```
-Usage: apple_news_to_sqlite [OPTIONS] [DB_PATH]
+Usage: apple-news-to-sqlite [OPTIONS] [DB_PATH]
 
   Export your Apple News saved stories/articles to a SQLite database
 

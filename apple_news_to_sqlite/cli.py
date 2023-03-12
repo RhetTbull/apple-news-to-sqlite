@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import datetime
+import json
 import sys
 
 import click
@@ -14,19 +16,24 @@ from .version import __version__
 
 @click.command()
 @click.version_option(version=__version__)
+@click.option(
+    "--dump",
+    "--json",
+    is_flag=True,
+    help="Print saved stories to standard output as JSON.",
+)
+@click.option("--schema", is_flag=True, help="Create database schema and exit.")
 @click.argument(
     "db_path",
     type=click.Path(file_okay=True, dir_okay=False, allow_dash=False),
     required=False,
 )
-@click.option("--dump", is_flag=True, help="Output saved stories to standard output")
-@click.option("--schema", is_flag=True, help="Create database schema and exit")
-def cli(db_path, dump, schema):
+def cli(dump, schema, db_path):
     """Export your Apple News saved stories/articles to a SQLite database
 
     Example usage:
 
-        apple_news_to_sqlite articles.db
+        apple-news-to-sqlite articles.db
 
     This will populate articles.db with an "articles" table containing information about
     your saved articles.
@@ -41,8 +48,7 @@ def cli(db_path, dump, schema):
 
     if dump:
         articles = get_saved_articles()
-        for article in articles:
-            print(article)
+        dump_articles(articles)
         sys.exit(0)
 
     db = sqlite_utils.Database(db_path)
@@ -75,3 +81,14 @@ def create_schema(db: sqlite_utils.Database) -> None:
             },
             pk="id",
         )
+
+
+def dump_articles(articles: list[dict[str, str]]) -> None:
+    """Dump articles to standard output"""
+
+    def default(obj):
+        if isinstance(obj, datetime.datetime):
+            return obj.isoformat()
+        raise TypeError
+
+    print(json.dumps(articles, indent=2, default=default))

@@ -38,7 +38,7 @@ Usage: apple-news-to-sqlite [OPTIONS] [DB_PATH]
 
   Example usage:
 
-      apple_news_to_sqlite articles.db
+      apple-news-to-sqlite articles.db
 
   This will populate articles.db with an "articles" table containing information
   about your saved articles.
@@ -47,10 +47,13 @@ Usage: apple-news-to-sqlite [OPTIONS] [DB_PATH]
   only metadata about the article such as title, author, url, etc.
 
 Options:
-  --version  Show the version and exit.
-  --dump     Output saved stories to standard output
-  --schema   Create database schema and exit
-  --help     Show this message and exit.
+  --version       Show the version and exit.
+  --dump, --json  Print saved stories to standard output as JSON.
+  --all           Process all saved articles; if not specified, only saved
+                  articles that have not previously been stored in the
+                  databaseare processed.
+  --schema        Create database schema and exit.
+  --help          Show this message and exit.
 
 ```
 <!-- [[[end]]] -->

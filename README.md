@@ -91,7 +91,9 @@ is extracted with [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup
 
 The code is at the "it works on my machine" stage of testing. (M1 Mini, macOS Ventura 13.1)
 
-If it doesn't work for you, please open a PR!
+I've also tested this on macOS Catalina 10.15.7 and it appears to work correctly.
+
+If it doesn't work for you, please open an issue!
 
 ## Contributing
 

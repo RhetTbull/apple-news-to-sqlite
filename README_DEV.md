@@ -14,9 +14,11 @@ For versioning, this project uses [bump2version](https://github.com/c4urself/bum
 
 Run again without `--dry-run` to actually bump the version.
 
-`doit` is used for running tasks:
+[doit](https://pydoit.org/) is used for running tasks:
 
 * `poetry run doit list`
+
+[cogapp](https://nedbatchelder.com/code/cog) is used for updating the README.md (called via `doit`)
 
 ## Testing
 

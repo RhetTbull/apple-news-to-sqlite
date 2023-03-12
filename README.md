@@ -6,7 +6,7 @@ Export Apple News Saved Stories to SQLite
 
     pip install apple-news-to-sqlite
 
-## Source Code
+## Source code
 
 [apple-news-to-sqlite](https://github.com/RhetTbull/apple-news-to-sqlite)
 
@@ -16,7 +16,9 @@ Export Apple News Saved Stories to SQLite
     
     apple-news-to-sqlite --dump
 
-## CLI Help
+Your Terminal app will require full disk access in order to access the saved article database in the Apple News app sandbox.
+
+## CLI help
 
 <!-- [[[cog
 import cog
@@ -69,6 +71,26 @@ following keys (all strings):
 >>> from apple_news_to_sqlite import get_saved_articles
 >>> articles = get_saved_articles()
 ```
+
+## How it works
+
+Through reverse engineering, it was determined that the Apple News app stores
+saved articles in a file called `reading-list` in the following directory:
+
+`~/Library/Containers/com.apple.news/Data/Library/Application Support/com.apple.news/com.apple.news.public-com.apple.news.private-production/`
+
+This format of this file is unknown but it is a binary file that contains two embedded 
+[binary plist](https://medium.com/@karaiskc/understanding-apples-binary-property-list-format-281e6da00dbd)
+files. The first contains an [NSKeyedArchiver](https://developer.apple.com/documentation/foundation/nskeyedarchiver)
+object which I have not yet inspected. The second bplist contains a list of saved article IDs along with the date
+they were saved. The article IDs are used to look up the article data on Apple's News site and the article data
+is extracted with [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/).
+
+## Testing
+
+The code is at the "it works on my machine" stage of testing. (M1 Mini, macOS Ventura 13.1)
+
+If it doesn't work for you, please open a PR!
 
 ## Contributing
 

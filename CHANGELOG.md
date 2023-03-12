@@ -2,7 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## Fixed typo in help
+
+[v0.4.1](https://github.com/RhetTbull/apple-news-to-sqlite/releases/tag/v0.4.1)
+
+### 12 March 2023
+
+### Changed
+
+- Fixed typo in help
+
+### Contributors
+
+- @RhetTbull
+
 ## Add JSON output, skipping of previously saved articles
+
+[v0.4.0](https://github.com/RhetTbull/apple-news-to-sqlite/releases/tag/v0.4.0)
 
 ### 12 March 2023
 

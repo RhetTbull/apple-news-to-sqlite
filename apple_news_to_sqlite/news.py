@@ -148,12 +148,6 @@ def get_saved_articles(reading_list_file: str | None = None) -> list[dict[str, s
     saved_articles = []
     for article in article_info.values():
         article_id = article["articleID"]
-        # try:
         saved_articles.append(extract_info_from_apple_news(article_id))
-        # except Exception as e:
-        # TODO: better error handling. Saving a feed for example, causes this to fail
-        # print(
-        # f"Error extracting article info for {article_id}: {e}", file=sys.stderr
-        # )
 
     return saved_articles

@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## Threaded downloads
+
+## 12 March 2023
+
+### Changed
+
+- Threaded downloads: To get the article metadata, apple-news-to-sqlite must download data from https://apple.news for each saved article.
+This version uses concurrent.futures to allow multiple threads to do the download in parallel, which is much faster
+for large reading lists.
+
+### Contributors
+
+- @RhetTbull for code changes
+
 ## Fixed PyPI metadata
 
 [v0.4.2](https://github.com/RhetTbull/apple-news-to-sqlite/releases/tag/v0.4.2)

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "apple-news-to-sqlite"
-version = "0.4.2"
+version = "0.5.0"
 description = "Export \"Saved Stories\" from Apple News to SQLite"
 authors = ["Rhet Turnbull <rturnbull+git@gmail.com>"]
 license = "MIT License"

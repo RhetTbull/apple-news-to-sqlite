@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## Threaded downloads
 
+[v0.5.1](https://github.com/RhetTbull/apple-news-to-sqlite/releases/tag/v0.5.1)
+
 ## 12 March 2023
 
 ### Changed

@@ -13,7 +13,6 @@ import contextlib
 import io
 import pathlib
 import plistlib
-import re
 
 import requests
 from bs4 import BeautifulSoup
@@ -148,6 +147,8 @@ def get_saved_articles(reading_list_file: str | None = None) -> list[dict[str, s
     saved_articles = []
     for article in article_info.values():
         article_id = article["articleID"]
-        saved_articles.append(extract_info_from_apple_news(article_id))
+        article_info = extract_info_from_apple_news(article_id)
+        article_info["date"] = article["dateAdded"]
+        saved_articles.append(article_info)
 
     return saved_articles

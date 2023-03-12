@@ -58,14 +58,15 @@ Options:
 ## Using apple-news-to-sqlite in your own Python code
 
 `get_saved_articles()` returns a list of dictionaries, each representing a saved article with the
-following keys (all strings):
+following keys:
 
-    * id
-    * url
-    * title
-    * description
-    * image
-    * author
+    * id: str
+    * date: datetime.datetime
+    * url: str
+    * title: str
+    * description: str
+    * image: str
+    * author: str
 
 ```pycon
 >>> from apple_news_to_sqlite import get_saved_articles

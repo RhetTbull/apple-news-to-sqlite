@@ -53,7 +53,7 @@ def cli(db_path, dump, schema):
 
     articles = get_saved_articles()
     for article in articles:
-        db["articles"].upsert(article, pk="id")
+        db["articles"].upsert(article, pk="id", alter=True)
 
     print(
         f"Saved {len(articles)} {'articles' if len(articles) != 1 else 'article'} to {db_path}"
@@ -66,6 +66,7 @@ def create_schema(db: sqlite_utils.Database) -> None:
         db["articles"].create(
             {
                 "id": str,
+                "date": str,
                 "url": str,
                 "title": str,
                 "description": str,

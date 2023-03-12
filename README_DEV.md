@@ -6,7 +6,7 @@ This project uses poetry for dependency management and packaging.
 * `poetry install`
 * `poetry run python -m apple_news_to_sqlite --help`
 
-For versioning, this project uses [bump2version](https://github.com/c4urself/bump2version).
+[bump2version](https://github.com/c4urself/bump2version) is used for bumping the version.
 
 `bump2version` is installed as a dev dependency, so you can run it like this:
 
@@ -22,4 +22,4 @@ Run again without `--dry-run` to actually bump the version.
 
 ## Testing
 
-Not yet implemented.
+* `poetry run pytest`

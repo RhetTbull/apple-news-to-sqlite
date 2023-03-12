@@ -53,6 +53,7 @@ def cli(dump, schema, db_path):
 
     db = sqlite_utils.Database(db_path)
     create_schema(db)
+
     if schema:
         # Our work is done
         return

@@ -43,8 +43,12 @@ Usage: apple-news-to-sqlite [OPTIONS] [DB_PATH]
   This will populate articles.db with an "articles" table containing information
   about your saved articles.
 
-  Note: the contents of the articles themselves are not stored in the database,
-  only metadata about the article such as title, author, url, etc.
+  Notes:
+
+  The contents of the articles themselves are not stored in the database, only
+  metadata about the article such as title, author, url, etc.
+
+  The date the article was saved is in GMT.
 
 Options:
   --version       Show the version and exit.

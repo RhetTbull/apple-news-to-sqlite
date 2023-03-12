@@ -6,6 +6,9 @@ authors = ["Rhet Turnbull <rturnbull+git@gmail.com>"]
 license = "MIT License"
 readme = "README.md"
 packages = [{ include = "apple_news_to_sqlite" }]
+homepage = "https://github.com/RhetTbull/apple-news-to-sqlite"
+repository = "https://github.com/RhetTbull/apple-news-to-sqlite"
+keywords = ["cli", "mac", "macos", "sqlite", "news", "apple"]
 
 [tool.poetry.dependencies]
 python = "^3.9"

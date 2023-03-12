@@ -5,3 +5,4 @@ __pycache__/
 dist/
 build/
 .doit.db.db
+.DS_Store

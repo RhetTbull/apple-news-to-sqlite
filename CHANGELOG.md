@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## Add JSON output, skipping of previously saved articles
+
+### 12 March 2023
+
+### Changed
+
+- --dump now dumps articles as JSON
+- Only articles not previously saved are processed, added --all to save all articles
+
+### Contributors
+
+- @RhetTbull for code
+
 ## Initial Release
 
 [v0.3.0](https://github.com/RhetTbull/apple-news-to-sqlite/releases/tag/v0.3.0)

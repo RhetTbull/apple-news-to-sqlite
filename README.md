@@ -70,6 +70,12 @@ following keys (all strings):
 >>> articles = get_saved_articles()
 ```
 
+## Contributing
+
+Contributions of all types are welcome! Fork the repo, make a branch, and submit a PR.
+
+See [README_DEV.md](README_DEV.md) for developer notes.
+
 ## Thanks
 
 Thanks to [Simon Willison](https://simonwillison.net/) who inspired this project

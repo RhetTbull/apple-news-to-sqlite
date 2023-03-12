@@ -6,6 +6,10 @@ Export Apple News Saved Stories to SQLite
 
     pip install apple-news-to-sqlite
 
+## Source Code
+
+[apple-news-to-sqlite](https://github.com/RhetTbull/apple-news-to-sqlite)
+
 ## Usage
 
     apple-news-to-sqlite articles.db

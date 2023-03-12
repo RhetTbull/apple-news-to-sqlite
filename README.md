@@ -24,7 +24,7 @@ from apple_news_to_sqlite.cli import cli
 from click.testing import CliRunner
 runner = CliRunner()
 result = runner.invoke(cli, ["--help"])
-help = result.output.replace("Usage: cli", "Usage: apple_news_to_sqlite")
+help = result.output.replace("Usage: cli", "Usage: apple-news-to-sqlite")
 cog.out(
     "```\n{}\n```".format(help)
 )

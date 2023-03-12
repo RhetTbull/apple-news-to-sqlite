@@ -179,10 +179,10 @@ def get_saved_articles(
                 executor.submit(extract_info_from_apple_news, news_id=article_id)
             )
 
-    saved_articles = []
-    for future in concurrent.futures.as_completed(futures):
-        info = future.result()
-        info["date"] = article_info[f"rl-{info['id']}"]["dateAdded"]
-        saved_articles.append(info)
+        saved_articles = []
+        for future in concurrent.futures.as_completed(futures):
+            info = future.result()
+            info["date"] = article_info[f"rl-{info['id']}"]["dateAdded"]
+            saved_articles.append(info)
 
-    return saved_articles
+        return saved_articles

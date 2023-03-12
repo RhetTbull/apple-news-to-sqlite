@@ -45,8 +45,12 @@ def cli(dump, all_articles, schema, db_path):
     This will populate articles.db with an "articles" table containing information about
     your saved articles.
 
-    Note: the contents of the articles themselves are not stored in the database, only
+    Notes:
+
+    The contents of the articles themselves are not stored in the database, only
     metadata about the article such as title, author, url, etc.
+
+    The date the article was saved is in GMT.
     """
     if not db_path and not dump:
         raise click.UsageError(

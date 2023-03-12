@@ -27,7 +27,7 @@ from .version import __version__
     "all_articles",
     is_flag=True,
     help="Process all saved articles; "
-    "if not specified, only saved articles that have not previously been stored in the database"
+    "if not specified, only saved articles that have not previously been stored in the database "
     "are processed.",
 )
 @click.option("--schema", is_flag=True, help="Create database schema and exit.")

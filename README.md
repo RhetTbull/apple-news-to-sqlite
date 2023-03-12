@@ -50,8 +50,8 @@ Options:
   --version       Show the version and exit.
   --dump, --json  Print saved stories to standard output as JSON.
   --all           Process all saved articles; if not specified, only saved
-                  articles that have not previously been stored in the
-                  databaseare processed.
+                  articles that have not previously been stored in the database
+                  are processed.
   --schema        Create database schema and exit.
   --help          Show this message and exit.
 

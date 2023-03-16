@@ -9,7 +9,6 @@ Thanks to Dave Bullock (https://github.com/eecue) who's idea this was and who wr
 
 from __future__ import annotations
 
-import concurrent.futures
 import contextlib
 import io
 import pathlib
@@ -169,20 +168,13 @@ def get_saved_articles(
     article_info = get_article_info(reading_list)
 
     # Extract the article information from Apple News
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        futures = []
-        for article in article_info.values():
-            article_id = article["articleID"]
-            if article_id in skip_article_ids:
-                continue
-            futures.append(
-                executor.submit(extract_info_from_apple_news, news_id=article_id)
-            )
+    saved_articles = []
+    for article in article_info.values():
+        article_id = article["articleID"]
+        if article_id in skip_article_ids:
+            continue
+        info = extract_info_from_apple_news(news_id=article_id)
+        info["date"] = article_info[f"rl-{info['id']}"]["dateAdded"]
+        saved_articles.append(info)
 
-        saved_articles = []
-        for future in concurrent.futures.as_completed(futures):
-            info = future.result()
-            info["date"] = article_info[f"rl-{info['id']}"]["dateAdded"]
-            saved_articles.append(info)
-
-        return saved_articles
+    return saved_articles

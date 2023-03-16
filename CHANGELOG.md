@@ -2,11 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
+## Bug Fix
+
+[v0.5.2](https://github.com/RhetTbull/apple-news-to-sqlite/releases/tag/v0.5.2)
+
+### 15 March 2023
+
+### Changed
+
+- Removed concurrent downloads to avoid time out errors on Apple's news website
+
+### Contributors
+
+- @RhetTbull for code changes
+
 ## Threaded downloads
 
 [v0.5.1](https://github.com/RhetTbull/apple-news-to-sqlite/releases/tag/v0.5.1)
 
-## 12 March 2023
+### 12 March 2023
 
 ### Changed
 
